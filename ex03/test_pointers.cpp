@@ -20,7 +20,7 @@ int main(void)
   
   // 4. print out the content of the memory location pointed to by f
   
-  cout << "content of the memory of f is " << *f << endl << endl;
+  cout << "content of the memory : " << *f << endl << endl;
 
   //
   
@@ -36,25 +36,25 @@ int main(void)
   
   // 7. print out what ip points to and the content of a[0] (verify they are the same)
   
-  cout << "the value of ip is" << ip << endl 
-    << "and, the value of a[0] is " << a[0] << endl << endl;
+  cout << "the value :" << ip << endl 
+    << "and, the value of a[0] : " << a[0] << endl << endl;
   
   // 8. increase ip by 3 and check that what it points to corresponds to a[3]
   
   ip+= 3;
 
   cout << "the value of ip is" << ip << endl 
-  << "and, the value of a[3] is " << a[3] << endl << endl;
+  << "and, the value of a[3] : " << a[3] << endl << endl;
   
   // 9. make ip points to the last element of the array by increasing it by 1
   
   ip++;
 
-  cout << "the value of ip is" << ip << endl;
+  cout << "the value　:" << ip << endl;
   
   //     and check that what it points to corresponds to a[4]
   
-  cout << "and, the value of a[4] is " << a[4] << endl << endl;
+  cout << "the value od a[4]:" << a[4] << endl << endl;
 
 
 
@@ -70,15 +70,23 @@ int main(void)
   d = (double *)malloc(n * sizeof(double));
 
   // 11. store in each d[i] (for i=0 to n-1) the value double(i) / 5.0;
+  
   for(i = 0; i < n-1; i++)d[i] = double(i) /5.0;
+  
   // 12. print out each element of d
-  for(i = 0; i < n-1; i++)cout << "the element of d is " << d[i] << endl;
+  
+  for(i = 0; i < n-1; i++)cout << "the element :" << d[i] << endl;
+  
   // 13. delete the previously allocated memory
+  
   free(d);
+  
   //
+  
   int m = 5;
   n = 20;
   double** dd;
+  
   // 14. allocate memory for a 2d array of size m * n on the heap (i.e. m arrays of size n).  
   
   
