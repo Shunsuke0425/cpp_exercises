@@ -65,9 +65,8 @@ int main(void)
   
   // 10. declare a variable d as a pointer to double and 
   // make it point to an array of "n" element of type "double" created on the heap
-  double* d;
 
-  d = (double *)malloc(n * sizeof(double));
+  double* d = new double[n];
 
   // 11. store in each d[i] (for i=0 to n-1) the value double(i) / 5.0;
   
@@ -79,7 +78,7 @@ int main(void)
   
   // 13. delete the previously allocated memory
   
-  free(d);
+  delete[] d;
   
   //
   
