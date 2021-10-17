@@ -9,7 +9,7 @@ bool Stack::empty(){
     else return false;
 }
 bool Stack::full(){
-    if(_top == _data->max_size()) return true;
+    if(_top == _data->max_size()-1) return true;
     else return false;
 }
 
