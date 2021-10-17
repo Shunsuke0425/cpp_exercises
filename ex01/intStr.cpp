@@ -27,3 +27,4 @@ char* intToStr(int number){
     }
     return string;
 }
+/*Now, I'm going to modify this code.*/ 
