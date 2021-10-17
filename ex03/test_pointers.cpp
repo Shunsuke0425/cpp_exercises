@@ -32,7 +32,7 @@ int main(void)
   
   // 6. make ip points to the beginning of the array a
   
-  ip = &a[0];
+  ip = a;
   
   // 7. print out what ip points to and the content of a[0] (verify they are the same)
   
