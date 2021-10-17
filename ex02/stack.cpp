@@ -1,17 +1,21 @@
 #include <iostream>
+#include <string>
 #include "stack.h"
+size_t max_size();
+
 using namespace std;
 bool Stack::empty(){
-    if(_top == 0) return true;
+    if(_top == -1) return true;
     else return false;
 }
 bool Stack::full(){
-    if(_top == sizeof(_data)) return true;
+    if(_top == _data->max_size()) return true;
     else return false;
 }
 
 int Stack::size(){
-    return _top;
+    if(_top == -1) return 0;
+    else return _top;
 }
 
 void Stack::push(string str){
@@ -21,7 +25,8 @@ void Stack::push(string str){
 
 void Stack::pop(){
     bool status = empty();
-    _top--;
+    if(status == true)cout << "Now, stack is empty!!" << endl;
+    else _top--;
 }
 
 string Stack::top(){
