@@ -1,7 +1,6 @@
--------
-string  
-test
-a
-is
+5
 this
--------
+is
+a
+test
+string
