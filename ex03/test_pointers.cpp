@@ -81,21 +81,29 @@ int main(void)
   delete[] d;
   
   //
-  
+  double* abc;
   int m = 5;
-  n = 20;
-  double** dd;
-  
+  n = 20;  
   // 14. allocate memory for a 2d array of size m * n on the heap (i.e. m arrays of size n).  
-  
+  double **dd = new double*[m];
+    for(i = 0; i < m; i++){
+    dd[i] = new double[n];
   
   // Make dd points to this 2d array.
-  
-  
+    abc = dd[0];
+  }
   // 15. set the element dd[i][j] to be equal to double(i)*double(j)
-  
-  
+  for(i = 0; i < m; i++){
+    for(int j = 0; j < n; j++){
+      dd[i][j] = double(i)*double(j);
+    }
+  }
+
   // 16. delete the memory allocated for the 2d array
+  for(i = 0; i < m; i++){
+    delete[] dd[i];
+  }
+  delete[] dd;
 
   return 0;
 }
