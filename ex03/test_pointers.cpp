@@ -106,4 +106,5 @@ int main(void)
   delete[] dd;
 
   return 0;
+  //success!
 }
