@@ -1,5 +1,5 @@
 #include <cassert>
-#include "inc.cpp"
+#include "inc.h"
 int main(void) {
     double a = 1.0;
     inc(a); 
