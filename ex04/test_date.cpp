@@ -4,7 +4,7 @@
 int main(void) {
     Date d;
     d.set(2, 28, 2009);
-    d.print();
+    d.print(); /*初期設定の表示*/
 
     d.inc_day();
     d.print();
