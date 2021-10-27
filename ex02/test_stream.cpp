@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "stack.cpp"
+#include "stack.h"
 using namespace std;
 int main(int argc, char *argv[]){
     ifstream readfile("Data.txt");
