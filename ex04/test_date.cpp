@@ -3,10 +3,11 @@
 
 int main(void) {
     Date d;
-    d.set(10, 1, 1998);
+    d.set(2, 28, 2009);
     d.print();
 
     d.inc_day();
+    d.print();
     d.inc_month(); 
     d.print(); 
 
