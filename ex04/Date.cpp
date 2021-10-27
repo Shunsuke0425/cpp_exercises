@@ -7,23 +7,29 @@ void Date::set(int m, int d, int y){
 }
 
 void Date::print() const{
-    std::cout << "month is : " << month << std::endl;
+    std::cout << "year : " << year << " month : " << month << " day : " << day << std::endl;
 }
 
 int Date::get_month() const{
-    return 0;
+    return month;
 }
 
 int Date::get_year() const{
-    return 0;
+    return year;
 }
 
 int Date::get_day() const{
-    return 0;
+    return day;
 }
 
-void Date::inc_day() {}
+void Date::inc_day(){
+    day++;
+}
 
-void Date::inc_month() {}
+void Date::inc_month(){
+    month++;
+}
 
-void Date::inc_year() {}
+void Date::inc_year(){
+    year++;
+}
