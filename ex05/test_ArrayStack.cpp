@@ -11,7 +11,6 @@ ArrayStack stack1;
 stack1.empty();
 for(int i = 0; i < 5; i++){
     stack1.push(test);
-    std::cout << stack1.top() << std::endl;
     test++;
 }
 //output the each stacks

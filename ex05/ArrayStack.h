@@ -34,7 +34,7 @@ public:
      */
         _num_items(0),
         _allocated_size(0),
-        _items(NULL)
+        _items(nullptr)
     {}
 
 
@@ -42,6 +42,8 @@ public:
     /* COMPLETE ... init _num_items to 0, 
      * pre-allocate memory for an array of size allocated_size
      * and make _items point to it */
+    _num_items(0),
+    _allocated_size(allocated_size),
     _items(new double[allocated_size]){}
     
     // Destructor:
