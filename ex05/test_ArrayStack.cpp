@@ -14,11 +14,11 @@ for(int i = 0; i < 5; i++){
     test++;
 }
 //output the each stacks
-top_size = stack1.size();
+/*top_size = stack1.size();
 for(int i = 0; i < top_size; i++){
         std::cout << "top_size " << stack1.size() << " : " << stack1.top() << std::endl;
         stack1.pop();
-}
+}*/
 
 test = 1.0; //initialize the test value
 
@@ -32,10 +32,41 @@ for(int i = 0; i < 10; i++){
     test++;
 }
 //output the each stacks
-top_size = stack2.size();
+/*top_size = stack2.size();
 for(int i = 0; i < top_size; i++){
         std::cout << "top_size " << stack2.size() << " : " << stack2.top() << std::endl;
         stack2.pop();
+}*/
+
+// Copy
+ArrayStack stack3(stack1);
+ArrayStack stack4 = stack2;
+
+// Assignment
+ArrayStack stack5;
+stack5 = stack1;
+ArrayStack stack6(10);
+stack6 = stack6;
+
+// COMPLETE 
+// Show the content of the stacks 'stack1', 'stack3' and 'stack4' by calls to pop() and top() 
+// (use a loop and the method ArrayStack::empty() for the termination condition)
+//output the stack1
+while(stack1.empty() != true){
+    std::cout << "top_size " << stack1.size() << " : " << stack1.top() << std::endl;
+    stack1.pop();
+}
+//output the stack4
+std::cout << "output the stack3" << std::endl;
+while(stack3.empty() != true){
+    std::cout << "top_size " << stack3.size() << " : " << stack3.top() << std::endl;
+    stack3.pop();
+}
+//output the stack4
+std::cout << "output the stack4" << std::endl;
+while(stack4.empty() != true){
+    std::cout << "top_size " << stack4.size() << " : " << stack4.top() << std::endl;
+    stack4.pop();
 }
 return 0;
 }

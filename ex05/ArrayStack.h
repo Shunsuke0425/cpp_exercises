@@ -51,6 +51,28 @@ public:
         // COMPLETE
         delete[] _items;
     }
+    //Copy Constructor:
+    ArrayStack(const ArrayStack& another_arraystack){
+        std::cout << "Copy Constructor" <<  std::endl;
+        _items = new double[another_arraystack._allocated_size];
+        for(int i = 0; i < another_arraystack._num_items; i++){
+            _items[i] = another_arraystack._items[i];
+        }
+        _num_items = another_arraystack._num_items;
+        _allocated_size = another_arraystack._allocated_size;
+    }
+    // Assignment:
+    ArrayStack& operator = (const ArrayStack& another_arraystack2){
+        if(this == &another_arraystack2)return *this;
+        std::cout << "Assignment Operator" <<  std::endl;
+        _items = new double[another_arraystack2._allocated_size];
+        for(int i = 0; i < another_arraystack2._num_items; i++){
+            _items[i] = another_arraystack2._items[i];
+        }
+        _num_items = another_arraystack2._num_items;
+        _allocated_size = another_arraystack2._allocated_size;
+        return *this;
+    }
 
     void push(double item) {
         if (_num_items == _allocated_size) resize(2*_allocated_size);
