@@ -1,5 +1,6 @@
 // test_ArrayStack.cpp
 #include "ArrayStack.h"
+#include <utility>
 
 int main(void) {
 double test = 1.0;
@@ -38,6 +39,7 @@ for(int i = 0; i < top_size; i++){
         stack2.pop();
 }*/
 
+std::cout << "queation2 of exercise 5" << std::endl;
 // Copy
 ArrayStack stack3(stack1);
 ArrayStack stack4 = stack2;
@@ -52,11 +54,12 @@ stack6 = stack6;
 // Show the content of the stacks 'stack1', 'stack3' and 'stack4' by calls to pop() and top() 
 // (use a loop and the method ArrayStack::empty() for the termination condition)
 //output the stack1
+/*std::cout << "output the stack1" << std::endl;
 while(stack1.empty() != true){
     std::cout << "top_size " << stack1.size() << " : " << stack1.top() << std::endl;
     stack1.pop();
 }
-//output the stack4
+//output the stack3
 std::cout << "output the stack3" << std::endl;
 while(stack3.empty() != true){
     std::cout << "top_size " << stack3.size() << " : " << stack3.top() << std::endl;
@@ -67,6 +70,41 @@ std::cout << "output the stack4" << std::endl;
 while(stack4.empty() != true){
     std::cout << "top_size " << stack4.size() << " : " << stack4.top() << std::endl;
     stack4.pop();
+}*/
+
+std::cout << "question 3 of exercise 5" << std::endl;
+ // Move
+ArrayStack stack7 = std::move(stack5);
+
+stack6 = std::move(stack2);
+
+// COMPLETE 
+// Show the content of the stacks 'stack5', 'stack7', 'stack6' and 'stack2'
+// (use the same method as in question 2)
+//output the stack5
+std::cout << "output the stack5" << std::endl;
+while(stack5.empty() != true){
+    std::cout << "top_size " << stack5.size() << " : " << stack5.top() << std::endl;
+    stack5.pop();
 }
+//output the stack7
+std::cout << "output the stack7" << std::endl;
+while(stack7.empty() != true){
+    std::cout << "top_size " << stack7.size() << " : " << stack7.top() << std::endl;
+    stack7.pop();
+}
+//output the stack6
+std::cout << "output the stack6" << std::endl;
+while(stack6.empty() != true){
+    std::cout << "top_size " << stack6.size() << " : " << stack6.top() << std::endl;
+    stack6.pop();
+}
+//output the stack2
+std::cout << "output the stack2" << std::endl;
+while(stack2.empty() != true){
+    std::cout << "top_size " << stack2.size() << " : " << stack2.top() << std::endl;
+    stack2.pop();
+}
+
 return 0;
 }

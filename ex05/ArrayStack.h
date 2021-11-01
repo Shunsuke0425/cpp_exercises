@@ -74,6 +74,21 @@ public:
         return *this;
     }
 
+    //Move:
+    ArrayStack& operator = (ArrayStack&& another_arraystack3){
+        if(this == &another_arraystack3)return *this;
+        std::cout << "Move Constructor" << std::endl;
+        _items = new double[another_arraystack3._allocated_size];
+        for(int i = 0; i < another_arraystack3._num_items; i++){
+            _items[i] = another_arraystack3._items[i];
+        }
+        _num_items = another_arraystack3._num_items;
+        _allocated_size = another_arraystack3._allocated_size;
+        another_arraystack3._items = nullptr;
+        another_arraystack3._num_items = 0;
+        return *this;
+    }
+
     void push(double item) {
         if (_num_items == _allocated_size) resize(2*_allocated_size);
         _items[_num_items++] = item;
