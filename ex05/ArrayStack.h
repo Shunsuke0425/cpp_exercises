@@ -87,6 +87,12 @@ public:
         another_arraystack3._allocated_size = 0;
         return *this;
     }
+    //another Move assignment:
+    ArrayStack(ArrayStack&& another):
+        _items(nullptr),
+        _num_items(0),
+        _allocated_size(0)
+    {}
 
     void push(double item) {
         if (_num_items == _allocated_size) resize(2*_allocated_size);
