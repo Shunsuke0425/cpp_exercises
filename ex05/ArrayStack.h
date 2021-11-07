@@ -65,6 +65,7 @@ public:
     ArrayStack& operator = (const ArrayStack& another_arraystack2){
         if(this == &another_arraystack2)return *this;
         std::cout << "Assignment Operator" <<  std::endl;
+        delete[] _items;
         _items = new double[another_arraystack2._allocated_size];
         for(int i = 0; i < another_arraystack2._num_items; i++){
             _items[i] = another_arraystack2._items[i];
@@ -79,12 +80,11 @@ public:
         if(this == &another_arraystack3)return *this;
         std::cout << "Move Constructor" << std::endl;
         _items = new double[another_arraystack3._allocated_size];
-        for(int i = 0; i < another_arraystack3._num_items; i++){
-            _items[i] = another_arraystack3._items[i];
-        }
+        _items = another_arraystack3._items;
         _num_items = another_arraystack3._num_items;
         _allocated_size = another_arraystack3._allocated_size;
         another_arraystack3._items = nullptr;
+        another_arraystack3._allocated_size = 0;
         another_arraystack3._num_items = 0;
         another_arraystack3._allocated_size = 0;
         return *this;
