@@ -2,6 +2,7 @@
 #include "Shape2D.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "Point2D.h"
 #include <iostream>
 
 int main(void) {
