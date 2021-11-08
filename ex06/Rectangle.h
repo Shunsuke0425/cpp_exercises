@@ -8,8 +8,8 @@ class Rectangle:public Shape2D,Point2D{
     Rectangle();
     std::string get_name() const override;
     float compute_area() const override;
-    Shape2D* create() const override;
-    Shape2D* clone() const override;
+    Rectangle* create() const override;
+    Rectangle* clone() const override;
     void Set(const float size_h, const float size_w, const float size_corner) override;
     ~Rectangle();
 };

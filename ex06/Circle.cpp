@@ -9,18 +9,10 @@ float Circle::compute_area() const{
     return radius * radius * pi;
 }
 Shape2D* Circle::create() const{
-    Circle *new_circle;
-    return new_circle;
+    return new Circle;
 }
-Shape2D* Circle::clone() const{
-    Circle clone_circle(*this);
-    /*std::cout << "TEST : " << clone_circle->name << std::endl;
-    clone_circle->name = this->name;
-    std::cout << "success!" << std::endl;
-    clone_circle->radius = this->radius;
-    clone_circle->center = this->center;
-    std::cout << "success!" << std::endl;*/
-    return &clone_circle;
+Circle* Circle::clone() const{
+    return new Circle(*this);
 }
 void Circle::Set(float size_r, float size_c){
     radius = size_r;

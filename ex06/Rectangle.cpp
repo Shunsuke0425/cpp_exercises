@@ -6,13 +6,11 @@
 float Rectangle::compute_area() const{
     return height * width;
 }
-Shape2D* Rectangle::create() const{
-    Rectangle *new_Shape;
-    return new_Shape;
+Rectangle* Rectangle::create() const{
+    return new Rectangle;
 }
-Shape2D* Rectangle::clone() const{
-    Rectangle *clone_this;
-    return clone_this;
+Rectangle* Rectangle::clone() const{
+    return new Rectangle(*this);
 }
 void Rectangle::Set(const float size_h, const float size_w, const float size_corner){
     height = size_h;

@@ -9,7 +9,7 @@ class Circle:public Shape2D,Point2D{
     Circle();
     float compute_area() const override;
     Shape2D* create() const override;
-    Shape2D* clone() const override;
+    Circle* clone() const override;
     ~Circle();
     std::string get_name() const override;
     void Set(float size_r, float size_c) override;

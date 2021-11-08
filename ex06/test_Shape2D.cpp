@@ -52,18 +52,25 @@ int main(void) {
     }
   }
   std::cout << "Shape name is : " << test_Shape->get_name() << std::endl;
+  float size_h, size_w, size_corner, size_r, size_c;
   if(select_Shape == "Rectangle"){
-
+    std::cout << "Put Rectangle status!" << std::endl
+    << "height >>> ";
+    std::cin >> size_h;
+    std::cout << "width >>> ";
+    std::cin >> size_w;
+    std::cout << "left_corner >>> ";
+    std::cin >> size_corner;
+    test_Shape->Set(size_h,size_w,size_corner);
+  }else if(select_Shape == "Circle"){
+    std::cout << "Put Circle status!" << std::endl
+    << "radius >>> ";
+    std::cin >> size_r;
+    std::cout << "center >>> ";
+    std::cin >> size_c;
+    test_Shape->Set(size_r,size_c);
   }
-  
-  
-  /*std::cout << "Now, this output is about Rectangle." << std::endl;
-  (*rectangle).Set(4.4,5.5,1.2);
-  std::cout << "this Shape name is : " << (*rectangle).name << std::endl
-            << "rectangle.height : " << (*rectangle).height << std::endl
-            << "rectangle.width :" << (*rectangle).width << std::endl;
-  std::cout << "Next, this output is about Circle." << std::endl;
-
-  std::cout << "compute_area : " << (*rectangle).compute_area() << std::endl;
-  */
+  std::cout << "Area : " << test_Shape->compute_area() << std::endl;
+ // COMPLETE 
+  // Add tests to test your implementation of the class Polygon.
 }
