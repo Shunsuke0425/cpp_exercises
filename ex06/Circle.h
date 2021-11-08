@@ -1,16 +1,16 @@
 #pragma once
 #include "Shape2D.h"
 #include "Point2D.h"
+#include "Rectangle.h"
 #include <iostream>
+#include <string>
 class Circle:public Shape2D,Point2D{
     public:
-    Circle(){
-        name = "Circle";
-        center = 0.0;
-        radius = 0.0;
-    }
-    float compute_area() const;
-    Shape2D* create() const;
-    Shape2D* clone() const;
+    Circle();
+    float compute_area() const override;
+    Shape2D* create() const override;
+    Shape2D* clone() const override;
     ~Circle();
+    std::string get_name() const override;
+    void Set(float size_r, float size_c) override;
 };

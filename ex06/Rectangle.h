@@ -5,14 +5,11 @@
 class Rectangle:public Shape2D,Point2D{
     public:
     //Constructor
-    Rectangle(){
-        name = "Rectangle";
-        height = 0.0;
-        width = 0.0;
-        left_corner = 0.0;
-    }
-    float compute_area() const;
-    Shape2D* create() const;
-    Shape2D* clone() const;
+    Rectangle();
+    std::string get_name() const override;
+    float compute_area() const override;
+    Shape2D* create() const override;
+    Shape2D* clone() const override;
+    void Set(const float size_h, const float size_w, const float size_corner) override;
     ~Rectangle();
 };
