@@ -89,11 +89,14 @@ public:
     }
     //another Move assignment:
     ArrayStack(ArrayStack&& another):
-        _items(nullptr),
-        _num_items(0),
-        _allocated_size(0)
-    {}
-
+        _items(another._items),
+        _num_items(another._num_items),
+        _allocated_size(another._allocated_size)
+    {
+        another._items = nullptr;
+        another._num_items = 0;
+        another._allocated_size = 0;
+    }
     void push(double item) {
         if (_num_items == _allocated_size) resize(2*_allocated_size);
         _items[_num_items++] = item;
