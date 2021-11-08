@@ -6,9 +6,12 @@ class Shape2D{
     virtual float compute_area() const = 0;
     virtual Shape2D* create() const = 0;
     virtual Shape2D* clone() const = 0;
-    virtual void Set(float size_h, float size_w, float size_corner){};
-    virtual void Set(float size_r, float size_c){};
-    ~Shape2D(){};
+    virtual ~Shape2D(){};
     std::string name;
     float height, width, radius;
+    int n;
+};
+struct Point2D{
+    float x;
+    float y;
 };

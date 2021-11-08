@@ -2,7 +2,6 @@
 #include "Shape2D.h"
 #include "Rectangle.h"
 #include "Circle.h"
-#include "Point2D.h"
 #include <iostream>
 
 int main(void) {
@@ -22,29 +21,45 @@ int main(void) {
   //Clone TEST//
   std::cout << "TEST the clone() :" << std::endl;
   create = &c;
-  std::cout << "success!" << std::endl;
   Shape2D *clone_Shape;
   clone_Shape = create->clone();
-  std::cout << "success!" << std::endl;
   std::cout << "name is " << clone_Shape->get_name() << std::endl
   << "radius is " << clone_Shape->radius << std::endl;
+
+  ///TEST each shape
   std::cout << "--------------------------------------------------------" << std::endl
             << "Which do you want output Rectangle or Circle?" << std::endl
             << "If you select Rectangle, put the ""Rectangle"" then. " << std::endl
             << "Therefore, you select Circle, put the ""Circle"" then. " << std::endl
             << "--------------------------------------------------------" << std::endl;
-  std::string select_Shape;
+  Point2D point;
   Shape2D *test_Shape;
-  Rectangle pre_rectangle;
-  Circle pre_circle;
+  std::string select_Shape;
+  float size_h, size_w, size_cornerX, size_cornerY, size_r, size_centerX, size_centerY;
+
+  ///Select phaze
   while(1){
-      std::cout <<  ">>>";
-      std::cin >> select_Shape;
-      if(select_Shape == "Rectangle"){
-      test_Shape = &pre_rectangle;
+    std::cout <<  ">>>";
+    std::cin >> select_Shape;
+    if(select_Shape == "Rectangle"){
+      std::cout << "Put Rectangle status!" << std::endl
+      << "height >>> ";
+      std::cin >> size_h;
+      std::cout << "width >>> ";
+      std::cin >> size_w;
+      std::cout << "left_corner's x point >>> ";
+      std::cin >> size_cornerX;
+      std::cout << "left_corner's y point >>> ";
+      std::cin >> size_cornerY;
       break;
     }else if(select_Shape == "Circle"){
-      test_Shape = &pre_circle;
+      std::cout << "Put Circle status!" << std::endl
+      << "radius >>> ";
+      std::cin >> size_r;
+      std::cout << "center's x point >>> ";
+      std::cin >> size_centerX;
+      std::cout << "center's y point >>> ";
+      std::cin >> size_centerY;
       break;
     }else{
       std::cout << "you type the error!" << std::endl
@@ -52,25 +67,13 @@ int main(void) {
       << "retry!" << std::endl;
     }
   }
-  std::cout << "Shape name is : " << test_Shape->get_name() << std::endl;
-  float size_h, size_w, size_corner, size_r, size_c;
-  if(select_Shape == "Rectangle"){
-    std::cout << "Put Rectangle status!" << std::endl
-    << "height >>> ";
-    std::cin >> size_h;
-    std::cout << "width >>> ";
-    std::cin >> size_w;
-    std::cout << "left_corner >>> ";
-    std::cin >> size_corner;
-    test_Shape->Set(size_h,size_w,size_corner);
-  }else if(select_Shape == "Circle"){
-    std::cout << "Put Circle status!" << std::endl
-    << "radius >>> ";
-    std::cin >> size_r;
-    std::cout << "center >>> ";
-    std::cin >> size_c;
-    test_Shape->Set(size_r,size_c);
-  }
+  if(select_Shape == "Circle"){
+    Circle pre_circle(point, size_r);
+    test_Shape = &pre_circle;
+  }else if(select_Shape == "Rectangle"){
+    Rectangle pre_rectangle(point, size_h, size_w);
+    test_Shape = &pre_rectangle;
+  }else;
   std::cout << "Area : " << test_Shape->compute_area() << std::endl;
  // COMPLETE 
   // Add tests to test your implementation of the class Polygon.
