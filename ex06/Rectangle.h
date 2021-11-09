@@ -11,4 +11,5 @@ class Rectangle:public Shape2D{
     Rectangle* create() const override;
     Rectangle* clone() const override;
     ~Rectangle() override;
+    Point2D left_corner;
 };

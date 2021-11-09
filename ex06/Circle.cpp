@@ -7,16 +7,15 @@
 float Circle::compute_area() const{
     return radius * radius * pi;
 }
-Shape2D* Circle::create() const{
+Circle* Circle::create() const{
     return new Circle;
 }
 Circle* Circle::clone() const{
     return new Circle(*this);
 }
 Circle::Circle(){
-    Point2D point;
-    point.x = 0.0;
-    point.y = 0.0;
+    center.x = 0.0;
+    center.y = 0.0;
     name = "Circle";
     radius = 0.0;
 }
@@ -25,9 +24,8 @@ std::string Circle::get_name() const{
     return name;
 }
 Circle::Circle(Point2D point_center, float size_r){
-    Point2D point;
-    point.x = point_center.x;
-    point.y = point_center.y;
+    center.x = point_center.x;
+    center.y = point_center.y;
     radius = size_r;
     name = "Circle";
 }
