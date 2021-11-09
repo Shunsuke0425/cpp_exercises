@@ -14,9 +14,10 @@ Circle* Circle::clone() const{
     return new Circle(*this);
 }
 Circle::Circle(){
+    Point2D point;
+    point.x = 0.0;
+    point.y = 0.0;
     name = "Circle";
-    x = 0.0;
-    y = 0.0;
     radius = 0.0;
 }
 Circle::~Circle(){};
@@ -24,7 +25,9 @@ std::string Circle::get_name() const{
     return name;
 }
 Circle::Circle(Point2D point_center, float size_r){
-    x = point_center.x;
-    y = point_center.y;
+    Point2D point;
+    point.x = point_center.x;
+    point.y = point_center.y;
     radius = size_r;
+    name = "Circle";
 }

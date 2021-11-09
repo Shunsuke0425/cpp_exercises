@@ -13,18 +13,21 @@ Rectangle* Rectangle::clone() const{
 }
 Rectangle::~Rectangle(){};
 Rectangle::Rectangle(){
+    Point2D point;
     name = "Rectangle";
     height = 0.0;
     width = 0.0;
-    x = 0.0;
-    y = 0.0;
+    point.x = 0.0;
+    point.y = 0.0;
 }
 std::string Rectangle::get_name() const{
     return name;
 }
 Rectangle::Rectangle(Point2D size_corner, float size_h, float size_w){
-    x = size_corner.x;
-    y = size_corner.y;
+    Point2D point;
+    point.x = size_corner.x;
+    point.y = size_corner.y;
     height = size_h;
     width = size_w;
+    name = "Rectangle";
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Shape2D.h"
-class Rectangle:public Shape2D,Point2D{
+class Rectangle:public Shape2D{
     public:
     //Constructor
     Rectangle();

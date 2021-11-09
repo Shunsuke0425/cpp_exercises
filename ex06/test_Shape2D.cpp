@@ -67,13 +67,15 @@ int main(void) {
       << "retry!" << std::endl;
     }
   }
+  Circle pre_circle(point, size_r);
+  Rectangle pre_rectangle(point, size_h, size_w);
   if(select_Shape == "Circle"){
-    Circle pre_circle(point, size_r);
     test_Shape = &pre_circle;
   }else if(select_Shape == "Rectangle"){
-    Rectangle pre_rectangle(point, size_h, size_w);
     test_Shape = &pre_rectangle;
   }else;
+  //Rectangle pre_rectangle(point, size_h, size_w);
+  //test_Shape = &pre_rectangle;
   std::cout << "Area : " << test_Shape->compute_area() << std::endl;
  // COMPLETE 
   // Add tests to test your implementation of the class Polygon.
