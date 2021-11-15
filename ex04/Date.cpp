@@ -53,7 +53,6 @@ void Date::inc_month(){
         month  = 1;
         if(day == 31)day = 30;
         inc_year();
-    }
     }else month++;
 }
 
