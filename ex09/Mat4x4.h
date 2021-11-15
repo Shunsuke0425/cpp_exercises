@@ -72,7 +72,7 @@ class Mat4x4{
         }
         return *this;
     };
-    double operator()(const int another_i, const int another_i2){
+    T operator()(const int another_i, const int another_i2){
         return Mat[another_i][another_i2];
     };
     friend std::ostream& operator<<(std::ostream& ost, const Mat4x4<T, N>& another){
