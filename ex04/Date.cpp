@@ -39,13 +39,21 @@ void Date::inc_day(){
 }
 
 void Date::inc_month(){
-    if(month == 12){
-        month = 1;
-        if(day == 31)day = 30;
-        inc_year();
+    if(month == 1){
+        month++;
+        if((day == 31) && (flag == 1)){
+            day = 28;
+        }else if(day == 31){
+            day = 29;
+        }else;
     }else if(((month == 3) || (month == 5) || (month == 7) || (month == 8) || ( month == 10)) && (day == 31)){
         month++;
         day = 30;
+    }else if(month == 12){
+        month  = 1;
+        if(day == 31)day = 30;
+        inc_year();
+    }
     }else month++;
 }
 
