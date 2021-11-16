@@ -33,8 +33,8 @@ public:
      * set _items to the null pointer, 
      */
         _num_items(0),
-        _allocated_size(0),
-        _items(nullptr)
+        _items(nullptr),
+        _allocated_size(0)
     {}
 
 
@@ -43,8 +43,8 @@ public:
      * pre-allocate memory for an array of size allocated_size
      * and make _items point to it */
     _num_items(0),
-    _allocated_size(allocated_size),
-    _items(new double[allocated_size]){}
+    _items(new double[allocated_size]),
+    _allocated_size(allocated_size){}
     
     // Destructor:
     ~ArrayStack() {
@@ -54,52 +54,47 @@ public:
     //Copy Constructor:
     ArrayStack(const ArrayStack& another_arraystack){
         std::cout << "Copy Constructor" <<  std::endl;
+        _num_items = another_arraystack._num_items;
         _items = new double[another_arraystack._allocated_size];
         for(int i = 0; i < another_arraystack._num_items; i++){
             _items[i] = another_arraystack._items[i];
         }
-        _num_items = another_arraystack._num_items;
         _allocated_size = another_arraystack._allocated_size;
     }
     // Assignment:
     ArrayStack& operator = (const ArrayStack& another_arraystack2){
         if(this == &another_arraystack2)return *this;
         std::cout << "Assignment Operator" <<  std::endl;
+        _num_items = another_arraystack2._num_items;
         delete[] _items;
         _items = new double[another_arraystack2._allocated_size];
         for(int i = 0; i < another_arraystack2._num_items; i++){
             _items[i] = another_arraystack2._items[i];
         }
-        _num_items = another_arraystack2._num_items;
         _allocated_size = another_arraystack2._allocated_size;
         return *this;
     }
 
     //Move:
     ArrayStack& operator = (ArrayStack&& another_arraystack3){
-        if(this == &another_arraystack3){
-            another_arraystack3._items = nullptr;
-            another_arraystack3._num_items = 0;
-            another_arraystack3._allocated_size = 0;
-            return *this;
-        }
+        if(this == &another_arraystack3)return *this;
         std::cout << "Move Constructor" << std::endl;
-        _items = another_arraystack3._items;
         _num_items = another_arraystack3._num_items;
+        _items = another_arraystack3._items;
         _allocated_size = another_arraystack3._allocated_size;
-        another_arraystack3._items = nullptr;
         another_arraystack3._num_items = 0;
+        another_arraystack3._items = nullptr;
         another_arraystack3._allocated_size = 0;
         return *this;
     }
     //another Move assignment:
     ArrayStack(ArrayStack&& another):
-        _items(another._items),
         _num_items(another._num_items),
+        _items(another._items),
         _allocated_size(another._allocated_size)
     {
-        another._items = nullptr;
         another._num_items = 0;
+        another._items = nullptr;
         another._allocated_size = 0;
     }
     void push(double item) {
