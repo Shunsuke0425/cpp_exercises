@@ -1,6 +1,6 @@
 #include <iostream>
 #include "intStr.h"
-int intStr::strToInt(const char* string){
+int strToInt(const char* string){
     int number = 1;
     int check = 0;
     int i = 0;
@@ -19,7 +19,7 @@ int intStr::strToInt(const char* string){
     if(check == 1)number *= -1;
     return number;
 }
-char* intStr::intToStr(int n){
+char* intToStr(int n){
     int digit = 0;
     int count = 0;
     int flag = 0;
@@ -38,7 +38,7 @@ char* intStr::intToStr(int n){
             n /= 10;
         }
     }
-    char *string = (char*)malloc(count * 4);
+    char *string = (char*)malloc((count + 1) * 4);
     for(int i=0; i<count; i++){
         if((i==0) && (negative == true)){
             string[i] = '-';
