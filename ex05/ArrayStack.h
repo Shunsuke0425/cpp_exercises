@@ -77,7 +77,12 @@ public:
 
     //Move:
     ArrayStack& operator = (ArrayStack&& another_arraystack3){
-        if(this == &another_arraystack3)return *this;
+        if(this == &another_arraystack3){
+            another_arraystack3._items = nullptr;
+            another_arraystack3._num_items = 0;
+            another_arraystack3._allocated_size = 0;
+            return *this;
+        }
         std::cout << "Move Constructor" << std::endl;
         _items = another_arraystack3._items;
         _num_items = another_arraystack3._num_items;
