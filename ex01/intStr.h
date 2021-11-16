@@ -2,6 +2,8 @@
 using namespace std;
 class intStr{
     public:
-    char* intToStr(int);
-    int strToInt(char*);
+    char* intToStr(int n);
+    int strToInt(const char* string);
+    char* string;
+    int N;
 };

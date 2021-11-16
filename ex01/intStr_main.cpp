@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <string>
 #include "intStr.h"
 int main(void){
     intStr test;
@@ -12,9 +13,12 @@ int main(void){
     cin >> check;
     if(check==0){
         std::cout <<  ">>>";
-        std::string c_str;
-        cin >> c_str;
-        result_int = test.strToInt(&c_str[0]);
+        std::string C;
+        cin >> C;
+        int a = C.size();
+        C[a+1] = '\0';
+        const char* real_char = C.c_str();
+        result_int = test.strToInt(real_char);
     }
     else {
         std::cout <<  ">>>";
