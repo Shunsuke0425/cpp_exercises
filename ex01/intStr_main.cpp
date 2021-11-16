@@ -27,5 +27,5 @@ int main(void){
     std::cout << "output is ";
     if(check==0)std::cout << result_int << std::endl;
     else std::cout << result_str << std::endl;
-    delete[] result_str;
+    free(result_str);
 }

@@ -38,13 +38,17 @@ char* intToStr(int n){
             n /= 10;
         }
     }
-    char *string = (char*)malloc((count + 1) * 4);
+    char *string = (char*)malloc(count + 1);
     for(int i=0; i<count; i++){
         if((i==0) && (negative == true)){
             string[i] = '-';
-        }else {
+        }else if(negative == true){
             digit = temp % 10;
             string[count-i] = '0' + digit;
+            temp /=10;
+        }else{
+            digit = temp % 10;
+            string[(count-1)-i] = '0' + digit;
             temp /=10;
         }
     }
