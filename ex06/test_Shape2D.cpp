@@ -2,6 +2,7 @@
 #include "Shape2D.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "Polygon.h"
 #include <iostream>
 
 int main(void) {
@@ -9,7 +10,7 @@ int main(void) {
   // Write tests to test your implementation of the classes Rectangle and Circle. 
   /////////////TEST////////////////////
   //Create TEST//
-  std::cout << "TEST the create() :" << std::endl;
+  /*std::cout << "TEST the create() :" << std::endl;
   Shape2D *create;
   Rectangle r;
   Circle c;
@@ -76,7 +77,26 @@ int main(void) {
   }else;
   //Rectangle pre_rectangle(point, size_h, size_w);
   //test_Shape = &pre_rectangle;
-  std::cout << "Area : " << test_Shape->compute_area() << std::endl;
+  std::cout << "Area : " << test_Shape->compute_area() << std::endl;*/
  // COMPLETE 
   // Add tests to test your implementation of the class Polygon.
+  std::cout << "---------------------------" << std::endl;
+  std::cout << "    TEST polygon class     " << std::endl;
+  std::cout << "---------------------------" << std::endl;
+  /*std::cout << "please input the polygon class's size." << std::endl;
+  int n;
+  std::cout << ">>>";
+  std::cin >> n;*/
+  Point2D point_test[6];
+  std::cout << "clear" << std::endl;
+  point_test[0].x = 1.0; point_test[0].y = 1.0;
+  point_test[1].x = 1.0; point_test[1].y = 2.0;
+  point_test[2].x = 2.0; point_test[2].y = 2.0;
+  point_test[3].x = 3.0; point_test[3].y = 3.0;
+  point_test[4].x = 3.0; point_test[4].y = 2.0;
+  point_test[5].x = 1.0; point_test[5].y = 1.0;
+  std::cout << "clear" << std::endl;
+  Polygon Poly(6, point_test);
+  std::cout << "clear" << std::endl;
+  std::cout << "result : " << Poly.compute_area() <<  std::endl;
 }
