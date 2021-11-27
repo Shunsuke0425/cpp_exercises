@@ -20,7 +20,7 @@ class Mat4x4{
             }
         }
     };
-    Mat4x4<T, N> operator*(const Mat4x4<T, N>& another){
+    Mat4x4<T, N> operator*(const Mat4x4<T, N>& another) const{
         Mat4x4<T, N> result;
         for(int i = 0; i < N; i++ ){
             for(int j = 0; j < N; j++ ){
@@ -32,7 +32,7 @@ class Mat4x4{
         }
         return result;
     };
-    bool operator==(const Mat4x4<T, N>& another){
+    bool operator==(const Mat4x4<T, N>& another) const{
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 if((*this).Mat[i][j] != another.Mat[i][j])return false;
@@ -40,13 +40,14 @@ class Mat4x4{
         }
         return true;
     };
-    Mat4x4<T, N> operator-(const Mat4x4<T, N>& another){
+    Mat4x4<T, N> operator-(const Mat4x4<T, N>& another) const{
+        Mat4x4<T, N> result;
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
-                Mat[i][j] = Mat[i][j] - another.Mat[i][j];
+                result.Mat[i][j] = Mat[i][j] - another.Mat[i][j];
             }
         }
-        return *this;
+        return result;
     };
     Mat4x4<T, N> operator-(){
         for(int i = 0; i < N; i++){
@@ -56,6 +57,15 @@ class Mat4x4{
         }
         return *this;
     };
+    Mat4x4<T, N> operator+(const Mat4x4<T, N>& another) const{
+        Mat4x4<T, N> result;
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                result.Mat[i][j] = Mat[i][j] + another.Mat[i][j];
+            }
+        }
+        return result;
+    }
     Mat4x4<T, N> operator+=(const Mat4x4<T, N>& another){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
@@ -72,7 +82,7 @@ class Mat4x4{
         }
         return *this;
     };
-    T operator()(const int another_i, const int another_i2){
+    T operator()(const int another_i, const int another_i2) const{
         return Mat[another_i][another_i2];
     };
     friend std::ostream& operator<<(std::ostream& ost, const Mat4x4<T, N>& another){
