@@ -3,48 +3,41 @@
 #include <cstdio>
 #include <iostream>
 
-using namespace std;
-
+void  doSomeComputation(){   
+    throw std::runtime_error("failure during doing some computation");
+}
 class LogFile{
-    FILE* f;
+    FILE* file;
     public:
-    void doSomeComputation() {   
-        throw runtime_error("failure during doing some computation");
-    }
     LogFile(const char* a, const char* b){
-        f = fopen(a,b);
-        if(f==NULL){
-            doSomeComputation();
+        file = fopen(a,b);
+        if(file == NULL){
+            throw std::runtime_error("failure during doing some computation");
         }
     }
     ~LogFile(){
-        fclose(f);
+        fclose(file);
     }
-    int fputs(const char* str, FILE* f);
+    void fputs(const char* str){
+        std::fputs(str, file);
+    }
 };
-
 void example() {
-    FILE* logfile = fopen("logfile.txt", "w+");
-    if (!logfile) {
-    throw runtime_error("failed to open file");
+    LogFile* logfile = new LogFile("logfile.txt", "w+");
+    try{
+        (*logfile).fputs("log - 1");
+        doSomeComputation();
+        (*logfile).fputs("log - 2");
+    }catch(std::runtime_error e){
+        std::cout << e.what() << std::endl;
     }
-
-    fputs("log - 1", logfile);
-
- // Call a function that performs some computation and may throw 
- // an exception
-//doSomeComputation();
-LogFile f("logfile.txt","w+");
-
-    fputs("log - 2", logfile);
-        
-    cout << "closing logfile" << endl;
-    fclose(logfile);
+    std::cout << "closing logfile" << std::endl;
+    delete logfile;
 }
 
 int main(void) {
-    cout << "Calling example()" << endl;
+    std::cout << "Calling example()" << std::endl;
     example();
-    cout << "After calling example()" << endl;
+    std::cout << "After calling example()" << std::endl;
     return 0;
 }
