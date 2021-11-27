@@ -3,8 +3,8 @@
 #include <string>
 #include "stack.h"
 using namespace std;
-int main(void){
-    ifstream readfile("Data.txt");
+int main(int argc, char* argv[]){
+    ifstream readfile(argv[1]);
     if(!readfile){
         cerr << "Cannot read!" << endl;
         exit(1);
