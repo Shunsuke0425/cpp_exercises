@@ -41,12 +41,44 @@ double EFP::evaluate(std::string operation){
     ope["-"] = 1;
     ope["*"] = 2;
     ope["/"] = 2;
-    ope["("] = 3;
+    ope["("] = 0;
+    ope[")"] = 0;
     while(getline(S2, str, ' ')){
         if(ope.find(str) != ope.end()){
             check_pre  = ope[str];
             //Now, this if code is that when operations_stack still have 1 operation.
-            if((left_pre < check_pre) && (operations_stack.size() == 0)){
+            if((check_pre == 0 )&& (str == "(")){
+                operations_stack.push(str);
+                int count = 1, count_f = 0;
+                while(count != count_f){
+                    getline(S2, str, ' ');
+                    if(ope.find(str) != ope.end()){
+                        if(str == "("){
+                            operations_stack.push(str);
+                            count++;
+                        }else if(str == ")"){
+                            count_f++;
+                            value2 = operands_stack.top();
+                            operands_stack.pop();
+                            value1 = operands_stack.top();
+                            operands_stack.pop();
+                            pre_ope = operations_stack.top();
+                            operations_stack.pop();
+                            if((*pre_ope.c_str()) == '+'){
+                                result = value1 + value2;
+                            }else if((*pre_ope.c_str()) == '-'){
+                                result = value1 - value2;
+                            }else if((*pre_ope.c_str()) == '*'){
+                                result = value1 * value2;
+                            }else if((*pre_ope.c_str()) == '/'){
+                                result = value1 / value2;
+                            }else;
+                            operands_stack.push(result);
+                            operations_stack.pop();
+                        }else operations_stack.push(str);
+                    }else operands_stack.push(std::stod(str));
+                }
+            }else if((left_pre < check_pre) && (operations_stack.size() == 0)){
                 operations_stack.push(str);
                 left_pre = check_pre;
             }
@@ -73,7 +105,7 @@ double EFP::evaluate(std::string operation){
             }else if(check_pre > left_pre){
                 //this code is that I want to confirm that next operation is (.
                 getline(S2, confirm, ' ');
-                if(ope.find(confirm) == ope.end()){
+                if((ope.find(confirm) == ope.end() || confirm == ")")){
                     value2 = std::stod(confirm);
                     value1 = operands_stack.top();
                     operands_stack.pop();
@@ -83,9 +115,10 @@ double EFP::evaluate(std::string operation){
                     else if((*str.c_str()) == '/')pre_result = value1 / value2;
                     else;
                     operands_stack.push(pre_result);
+                    operations_stack.pop();
                 }
                 //This code is finding the '(' operation then.
-                else if(ope[confirm] == 3){
+                else if((ope[confirm] == 0) && (confirm == "(")){
                     getline(S2, pre1, ' ');
                     getline(S2, pre_ope, ' ');
                     getline(S2, pre2, ' ');
@@ -96,7 +129,6 @@ double EFP::evaluate(std::string operation){
                     else if((*pre_ope.c_str()) == '*')pre_result = value1 * value2;
                     else if((*pre_ope.c_str()) == '/')pre_result = value1 / value2;
                     else;
-                    std::cout << pre_result << std::endl;
                     operands_stack.push(pre_result);
                     operations_stack.push(str);
                     //To delete the ')' operation. ignore this.
@@ -110,16 +142,19 @@ double EFP::evaluate(std::string operation){
     while(operations_stack.size() != 0){
         str = operations_stack.top();
         operations_stack.pop();
-        value2 = operands_stack.top();
-        operands_stack.pop();
-        value1 = operands_stack.top();
-        operands_stack.pop();
-        if((*str.c_str()) == '+')result = value1 + value2;
-        else if((*str.c_str()) == '-')result = value1 - value2;
-        else if((*str.c_str()) == '*')result = value1 * value2;
-        else if((*str.c_str()) == '/')result = value1 / value2;
-        else;
-        operands_stack.push(result);
+        if(str == "("){}
+        else{
+            value2 = operands_stack.top();
+            operands_stack.pop();
+            value1 = operands_stack.top();
+            operands_stack.pop();
+            if((*str.c_str()) == '+')result = value1 + value2;
+            else if((*str.c_str()) == '-')result = value1 - value2;
+            else if((*str.c_str()) == '*')result = value1 * value2;
+            else if((*str.c_str()) == '/')result = value1 / value2;
+            else;
+            operands_stack.push(result);
+        }
     }
     return operands_stack.top();
 }
