@@ -85,7 +85,7 @@ class Matrix{
     T operator()(const int another_i, const int another_i2) const{
         return Mat[another_i][another_i2];
     }
-    T operator()(int another_i,int another_i2){
+    T& operator()(int another_i,int another_i2){
         return Mat[another_i][another_i2];
     }
     T Mat[N][N];
