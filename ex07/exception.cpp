@@ -9,10 +9,9 @@ void  doSomeComputation(){
 class LogFile{
     FILE* file;
     public:
-    LogFile(const char* a, const char* b){
-        file = fopen(a,b);
+    LogFile(const char* a, const char* b):file(std::fopen(a, b)){
         if(file == NULL){
-            throw std::runtime_error("failure during doing some computation");
+            throw std::runtime_error("failure opening the file");
         }
     }
     ~LogFile(){
@@ -21,18 +20,21 @@ class LogFile{
     void fputs(const char* str){
         std::fputs(str, file);
     }
+    private:
+    LogFile(const LogFile&);
+    LogFile& operator=(const LogFile&);
 };
 void example() {
-    LogFile* logfile = new LogFile("logfile.txt", "w+");
     try{
+        LogFile* logfile = new LogFile("logfile.txt", "w+");
         (*logfile).fputs("log - 1");
         doSomeComputation();
         (*logfile).fputs("log - 2");
+        std::cout << "closing logfile" << std::endl;
+        delete logfile;
     }catch(std::runtime_error e){
         std::cout << e.what() << std::endl;
     }
-    std::cout << "closing logfile" << std::endl;
-    delete logfile;
 }
 
 int main(void) {
