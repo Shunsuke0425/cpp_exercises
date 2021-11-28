@@ -105,7 +105,7 @@ double EFP::evaluate(std::string operation){
             }else if(check_pre > left_pre){
                 //this code is that I want to confirm that next operation is (.
                 getline(S2, confirm, ' ');
-                if((ope.find(confirm) == ope.end() || confirm == ")")){
+                if(ope.find(confirm) == ope.end()){
                     value2 = std::stod(confirm);
                     value1 = operands_stack.top();
                     operands_stack.pop();
@@ -115,7 +115,6 @@ double EFP::evaluate(std::string operation){
                     else if((*str.c_str()) == '/')pre_result = value1 / value2;
                     else;
                     operands_stack.push(pre_result);
-                    operations_stack.pop();
                 }
                 //This code is finding the '(' operation then.
                 else if((ope[confirm] == 0) && (confirm == "(")){
