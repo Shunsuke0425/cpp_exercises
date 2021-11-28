@@ -1,8 +1,8 @@
 #include <iostream>
 template <class T, int N>
-class Mat4x4{
+class Matrix{
     public:
-    Mat4x4(){
+    Matrix(){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 if(i == j){
@@ -12,16 +12,16 @@ class Mat4x4{
                 }
             }
         }
-    };
-    Mat4x4(T another[N][N]){
+    }
+    Matrix(T another[N][N]){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 Mat[i][j] = another[i][j];
             }
         }
-    };
-    Mat4x4<T, N> operator*(const Mat4x4<T, N>& another) const{
-        Mat4x4<T, N> result;
+    }
+    Matrix<T, N> operator*(const Matrix<T, N>& another) const{
+        Matrix<T, N> result;
         for(int i = 0; i < N; i++ ){
             for(int j = 0; j < N; j++ ){
                 result.Mat[i][j] = 0.0;
@@ -31,34 +31,34 @@ class Mat4x4{
             }
         }
         return result;
-    };
-    bool operator==(const Mat4x4<T, N>& another) const{
+    }
+    bool operator==(const Matrix<T, N>& another) const{
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 if((*this).Mat[i][j] != another.Mat[i][j])return false;
             }
         }
         return true;
-    };
-    Mat4x4<T, N> operator-(const Mat4x4<T, N>& another) const{
-        Mat4x4<T, N> result;
+    }
+    Matrix<T, N> operator-(const Matrix<T, N>& another) const{
+        Matrix<T, N> result;
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 result.Mat[i][j] = Mat[i][j] - another.Mat[i][j];
             }
         }
         return result;
-    };
-    Mat4x4<T, N> operator-(){
+    }
+    Matrix<T, N> operator-(){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 Mat[i][j] = 0.0 - Mat[i][j];
             }
         }
         return *this;
-    };
-    Mat4x4<T, N> operator+(const Mat4x4<T, N>& another) const{
-        Mat4x4<T, N> result;
+    }
+    Matrix<T, N> operator+(const Matrix<T, N>& another) const{
+        Matrix<T, N> result;
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 4; j++){
                 result.Mat[i][j] = Mat[i][j] + another.Mat[i][j];
@@ -66,33 +66,37 @@ class Mat4x4{
         }
         return result;
     }
-    Mat4x4<T, N> operator+=(const Mat4x4<T, N>& another){
+    Matrix<T, N> operator+=(const Matrix<T, N>& another){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 Mat[i][j] = Mat[i][j] + another.Mat[i][j];
             }
         }
         return *this;
-    };
-    Mat4x4<T, N> operator-=(const Mat4x4<T, N>& another){
+    }
+    Matrix<T, N> operator-=(const Matrix<T, N>& another){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 Mat[i][j] = Mat[i][j] - another.Mat[i][j];
             }
         }
         return *this;
-    };
+    }
     T operator()(const int another_i, const int another_i2) const{
         return Mat[another_i][another_i2];
-    };
-    friend std::ostream& operator<<(std::ostream& ost, const Mat4x4<T, N>& another){
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j < N; j++){
-                ost << another.Mat[i][j] << " ";
-            }
-            ost << std::endl;
-        }
-        return ost;
-    };
+    }
+    T operator()(int another_i,int another_i2){
+        return Mat[another_i][another_i2];
+    }
     T Mat[N][N];
+};
+template<class T, int N>
+std::ostream& operator<<(std::ostream& ost, const Matrix<T, N>& another){
+    for(int i = 0; i < N; i++){
+        for(int j = 0; j < N; j++){
+            ost << another.Mat[i][j] << " ";
+        }
+        ost << std::endl;
+    }
+    return ost;
 };
