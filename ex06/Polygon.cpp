@@ -21,11 +21,13 @@ Polygon::Polygon(){
     name = "Polygon";
 }
 Polygon::Polygon(int N, Point2D *point){
-    std::cout << std::endl;
+    test = new Point2D[N];
     for(int i = 0; i < N; i++){
         test[i].x = point[i].x;
         test[i].y = point[i].y;
     }
     n = N;
 }
-Polygon::~Polygon(){}
+Polygon::~Polygon(){
+    delete[] test;
+}

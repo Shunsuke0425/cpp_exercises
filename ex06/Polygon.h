@@ -11,5 +11,5 @@ class Polygon:public Shape2D{
     Polygon(int N, Point2D *point);
     ~Polygon() override;
     int n;
-    Point2D test[];
+    Point2D *test;
 };

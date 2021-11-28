@@ -97,5 +97,4 @@ int main(void) {
   Polygon Poly(6, point_test);
   Shape2D *test_main = &Poly;
   std::cout << "result : " << test_main->compute_area() <<  std::endl;
-  delete[] point_test;
 }
