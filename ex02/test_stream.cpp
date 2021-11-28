@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
     for(int i = 0; i < max_number; i++){
         readfile >> str;
         stack.push(str);
-        if(max_length < str.length())max_length = str.length();
+        if(max_length < str.size())max_length = str.size();
     }
     for(int i = 0; i < max_length; i++){
         cout << "-";
