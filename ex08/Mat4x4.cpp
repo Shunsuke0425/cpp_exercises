@@ -80,7 +80,7 @@ Mat4x4 Mat4x4::operator-=(const Mat4x4& another){
     }
     return *this;
 }
-double Mat4x4::operator()(const int another_i, const int another_i2) const{
+double Mat4x4::operator()(const int another_i, const int another_i2){
     return Mat[another_i][another_i2];
 }
 std::ostream& operator<<(std::ostream& ost, const Mat4x4& another){
