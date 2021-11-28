@@ -88,15 +88,14 @@ int main(void) {
   std::cout << ">>>";
   std::cin >> n;*/
   Point2D point_test[6];
-  std::cout << "clear" << std::endl;
   point_test[0].x = 1.0; point_test[0].y = 1.0;
   point_test[1].x = 1.0; point_test[1].y = 2.0;
   point_test[2].x = 2.0; point_test[2].y = 2.0;
   point_test[3].x = 3.0; point_test[3].y = 3.0;
   point_test[4].x = 3.0; point_test[4].y = 2.0;
   point_test[5].x = 1.0; point_test[5].y = 1.0;
-  std::cout << "clear" << std::endl;
   Polygon Poly(6, point_test);
-  std::cout << "clear" << std::endl;
-  std::cout << "result : " << Poly.compute_area() <<  std::endl;
+  Shape2D *test_main = &Poly;
+  std::cout << "result : " << test_main->compute_area() <<  std::endl;
+  delete[] point_test;
 }

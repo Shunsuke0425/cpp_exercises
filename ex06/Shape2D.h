@@ -14,4 +14,5 @@ class Shape2D{
 struct Point2D{
     float x;
     float y;
+    ~Point2D(){};
 };

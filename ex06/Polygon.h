@@ -10,6 +10,6 @@ class Polygon:public Shape2D{
     Polygon();
     Polygon(int N, Point2D *point);
     ~Polygon() override;
-    Point2D *test;
     int n;
+    Point2D test[];
 };
