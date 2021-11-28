@@ -16,7 +16,7 @@ int main(void) {
     data.push_back(pointer_3);
     data.push_back(pointer_4);
     data.push_back(pointer_5);
-    std::vector<double> result;
+    std::vector<Point> result;
     std::cout << "Please input the point's number that you want output" << std::endl;
     std::cout << ">>>";
     int number;
@@ -28,7 +28,7 @@ int main(void) {
     result = find_k_closest_2(number, data);
     /////////////////////////////////
     std::cout << number << " point's distance from origin" << std::endl;
-    for(std::vector<double>::iterator it = result.begin(); it != result.end(); it++){
-        std::cout << *it << std::endl;
+    for(std::vector<Point>::iterator it = result.begin(); it != result.end(); it++){
+        std::cout << "x : "<< (*it).x << ", y : "<< (*it).y << ", z : "<< (*it).z << " -> distance : " << distance(*it) << std::endl;
     }
 }

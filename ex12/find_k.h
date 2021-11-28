@@ -30,11 +30,11 @@ std::vector<Point> find_k_closest(int K, std::vector<Point> list){
     }
     return result;
 }
-std::vector<double> find_k_closest_2(int K, std::vector<Point> list){
-    std::function<bool(double,double)> func = [](double a,double b){return a>b;};
-    std::priority_queue<double, std::vector<double>, decltype(func)> queue_list_2(func);
-    std::vector<double> result;
-    for(std::vector<Point>::iterator it = list.begin(); it < list.end(); it++)queue_list_2.push(distance(*it));
+std::vector<Point> find_k_closest_2(int K, std::vector<Point> list){
+    std::function<bool(Point, Point)> func = [&](Point a, Point b){return distance(a) > distance(b);};
+    std::priority_queue<Point, std::vector<Point>, decltype(func)> queue_list_2(func);
+    std::vector<Point> result;
+    for(std::vector<Point>::iterator it = list.begin(); it < list.end(); it++)queue_list_2.push(*it);
     for(int i = 0; i < K; i++){
         result.push_back(queue_list_2.top());
         queue_list_2.pop();
