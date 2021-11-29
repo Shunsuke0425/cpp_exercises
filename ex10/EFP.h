@@ -8,7 +8,7 @@ double calc(double operand1, double operand2, std::string operation){
     else if((*operation.c_str()) == '-')result = operand1 - operand2;
     else if((*operation.c_str()) == '*')result = operand1 * operand2;
     else if((*operation.c_str()) == '/')result = operand1 / operand2;
-    else;
+    else std::cout << "error in the formula" << std::endl;
     return result;
 }
 double  evaluateFP(std::string operation){
