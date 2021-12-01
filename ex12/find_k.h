@@ -22,8 +22,9 @@ double distance(Point data){
 }
 std::vector<Point> find_k_closest(int K, std::vector<Point> list){
     std::priority_queue<Point, std::vector<Point>, Compare> queue_list;
-    std::vector<Point> result;
+    std::vector<Point> result; 
     for(std::vector<Point>::iterator it = list.begin(); it < list.end(); it++)queue_list.push(*it);
+    for(int i = 0; i < (list.size() - K); i++)queue_list.pop();
     for(int i = 0; i < K; i++){
         result.push_back(queue_list.top());
         queue_list.pop();
@@ -31,10 +32,23 @@ std::vector<Point> find_k_closest(int K, std::vector<Point> list){
     return result;
 }
 std::vector<Point> find_k_closest_2(int K, std::vector<Point> list){
-    std::function<bool(Point, Point)> func = [&](Point a, Point b){return distance(a) > distance(b);};
+    std::function<bool(Point, Point)> func = [&](Point a, Point b){return distance(a) < distance(b);};
     std::priority_queue<Point, std::vector<Point>, decltype(func)> queue_list_2(func);
     std::vector<Point> result;
-    for(std::vector<Point>::iterator it = list.begin(); it < list.end(); it++)queue_list_2.push(*it);
+    double check, max_size;
+    for(std::vector<Point>::iterator it = list.begin(); it < list.end(); it++){
+        if(it < (list.begin() + K)){
+            if(it == list.begin())max_size = distance(*it);
+            if(max_size < distance(*it))max_size = distance(*it);
+            queue_list_2.push(*it);
+        }else{
+            if(max_size > distance(*it)){
+                max_size = distance(*it);
+                queue_list_2.pop();
+                queue_list_2.push(*it);
+            }else;
+        }
+    }
     for(int i = 0; i < K; i++){
         result.push_back(queue_list_2.top());
         queue_list_2.pop();

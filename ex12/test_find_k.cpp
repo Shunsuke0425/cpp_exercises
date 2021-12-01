@@ -9,7 +9,7 @@ int main(void) {
     Point pointer_2(2.0, 7.0, 12.0);
     Point pointer_3(3.0, 8.0, 13.0);
     Point pointer_4(4.0, 9.0, 14.0);
-    Point pointer_5(5.0, 10.0, 15.0);
+    Point pointer_5(1.0, 0.0, 0.0);
     std::vector<Point> data;
     data.push_back(pointer_1);
     data.push_back(pointer_2);
