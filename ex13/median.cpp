@@ -6,19 +6,9 @@
 
 double compute_median(std::vector<double> data){
     int check = data.size() % 2;//0 or 1.
-    std::nth_element(data.begin(), data.begin() + (data.size() / 2 + 1), data.end());
-    double max_size = 0.0, max_size_2 = 0.0, median;
-    for(std::vector<double>::iterator it = data.begin(); it < (data.begin() + (data.size() / 2 + 1)); it++){
-        if(max_size < *it){
-            max_size_2 = max_size;
-            max_size = *it;
-        }else if(max_size_2 < (*it))max_size_2 = *it;
-        else;
-    }
-    //calculate the median
-    if(check == 0)median = (max_size + max_size_2) / 2;
-    else median = max_size;
-    return median;
+    size_t median = data.size() / 2;
+    std::nth_element(data.begin(), data.begin() + median, data.end());
+    return data[median];
 }
 std::vector<double> compute_k_closest(int K, std::vector<double> origin_data){
     if(K > origin_data.size()){
