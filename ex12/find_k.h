@@ -46,7 +46,7 @@ std::vector<Point> find_k_closest_2(int K, std::vector<Point> list){
                 max_size = distance(*it);
                 queue_list_2.pop();
                 queue_list_2.push(*it);
-            }else;
+            }
         }
     }
     for(int i = 0; i < K; i++){
