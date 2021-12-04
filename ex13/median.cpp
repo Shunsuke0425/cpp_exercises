@@ -5,10 +5,17 @@
 #include <list>
 
 double compute_median(std::vector<double> data){
-    int check = data.size() % 2;//0 or 1.
-    size_t median = data.size() / 2;
-    std::nth_element(data.begin(), data.begin() + median, data.end());
-    return data[median];
+    std::priority_queue<double, std::vector<double>, std::greater<double> > arr_median;
+    for(std::vector<double>::iterator it = data.begin(); it != data.end(); it++)arr_median.push(*it);
+    int check = arr_median.size() % 2;//0 or 1.
+    double median = arr_median.size() / 2;
+    for(std::vector<double>::iterator it = data.begin(); it != data.end(); it++){
+        *it = arr_median.top();
+        arr_median.pop();
+    }
+    std::nth_element(data.begin(), data.begin() + (median + 1), data.end());
+    if(check == 1)return data[median];
+    else return (data[median] + data[median - 1]) / 2;
 }
 std::vector<double> compute_k_closest(int K, std::vector<double> origin_data){
     if(K > origin_data.size()){
@@ -33,7 +40,7 @@ int main(void){
     //test compute_median code
     std::vector<double> data;
     int K;
-    double data_arr[] = {7.0,14.0,10.0,12.0,2.0,11.0,29.0,3.0,4.0};
+    double data_arr[] = {7.0,14.0,10.0,12.0,2.0,11.0,29.0,3.0,4.0,1.0};
     for(int i = 0; i < sizeof(data_arr)/sizeof(data_arr[0]); i++)data.push_back(data_arr[i]);
     std::cout << "Please input the number you want output" << std::endl;
     std::cout << ">>>";
